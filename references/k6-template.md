@@ -1,6 +1,6 @@
 # k6 script template
 
-The canonical shape every script produced by `/loadtest-toolkit:generate` should follow.
+The shape every script produced by `/loadtest-toolkit:generate` should follow.
 
 ## Imports
 
@@ -10,7 +10,7 @@ import { check, sleep } from 'k6';
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.4/index.js';
 ```
 
-`textSummary` powers a readable colorized stdout block inside `handleSummary`.
+`textSummary` powers the colorized stdout block inside `handleSummary`.
 
 ## Options
 
@@ -38,7 +38,7 @@ export default function () {
   const params = {
     headers: {
       'Content-Type': 'application/json',
-      // Move secrets to __ENV — never hardcode tokens.
+      // Move secrets to __ENV. Never hardcode tokens.
       // Run with: k6 run -e API_TOKEN=xxx script.test.js
       'Authorization': `Bearer ${__ENV.API_TOKEN}`,
     },
@@ -63,14 +63,14 @@ export default function () {
 
 ### Method variants
 
-- `GET` → `http.get(url, params)`
-- `POST` / `PUT` → send body and a `Content-Type` header matching the cURL request
-- `DELETE` → `http.del(url, null, params)`
-- For form bodies, send a URL-encoded string and set `Content-Type: application/x-www-form-urlencoded`.
+- `GET`: `http.get(url, params)`
+- `POST` / `PUT`: send body and a `Content-Type` header matching the cURL request
+- `DELETE`: `http.del(url, null, params)`
+- Form bodies: send a URL-encoded string and set `Content-Type: application/x-www-form-urlencoded`
 
 ## handleSummary
 
-The shared contract with `/loadtest-toolkit:evaluate` — write `summary.json` as the full `data` object, plus a stdout summary.
+The shared contract with `/loadtest-toolkit:evaluate`. Write `summary.json` as the full `data` object, plus a stdout summary.
 
 ```js
 export function handleSummary(data) {
@@ -81,9 +81,9 @@ export function handleSummary(data) {
 }
 ```
 
-`data` is whatever k6 passes to `handleSummary` — do not strip fields. The schema in `summary-schema.md` documents which paths `evaluate` reads.
+`data` is whatever k6 passes to `handleSummary`. Do not strip fields. The schema in `summary-schema.md` documents which paths `evaluate` reads.
 
 ## Secrets and env vars
 
 - Never hardcode bearer tokens, cookies, or API keys.
-- Read them from `__ENV.NAME` and leave a comment in the script telling the user how to set them on the `k6 run` command line.
+- Read them from `__ENV.NAME` and leave a comment in the script showing the `k6 run -e VAR=value` command.
