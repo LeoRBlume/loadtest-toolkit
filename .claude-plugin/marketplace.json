@@ -1,0 +1,16 @@
+{
+  "name": "LeoRBlume",
+  "owner": {
+    "name": "Leonardo Ribeiro Blume",
+    "url": "https://github.com/LeoRBlume"
+  },
+  "plugins": [
+    {
+      "name": "loadtest-toolkit",
+      "source": "./",
+      "description": "k6 load-test generator + HTML report evaluator.",
+      "category": "testing",
+      "keywords": ["k6", "load-testing", "performance"]
+    }
+  ]
+}

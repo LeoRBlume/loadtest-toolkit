@@ -1,0 +1,10 @@
+{
+  "name": "loadtest-toolkit",
+  "version": "0.1.0",
+  "description": "Generate k6 load-test scripts from a cURL command and turn k6 JSON summaries into HTML reports.",
+  "author": {
+    "name": "Leonardo Ribeiro Blume",
+    "url": "https://github.com/LeoRBlume"
+  },
+  "keywords": ["k6", "load-testing", "performance", "testing"]
+}
